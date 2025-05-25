@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Просмотр коллекций
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<div class="container profile ">
+    <div class="d-flex justify-content-center w-100">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <a href="#"><img src="static/img/nazarenko/nazarenko.jpg" alt="" width="50" class="rounded-circle" /></a>
+                        <div class="flex-fill ps-2">
+                            <div class="fw-bold"><a href="https://t.me/justdoit" class="text-decoration-none">Максим Назаренко</a></div>
+                            <div class="small text-body text-opacity-50">Published 22.05.2025</div>
+                        </div>
+                    </div>
+
+                    <p>Pure Gold Collection</p>
+                    <div class="profile-img-list">
+                        <div class="profile-img-list-item main">
+                            <a href="https://t.me/nft/ScaredCat-3496" data-lity="" class="profile-img-list-link">
+                                <span class="profile-img-content" style="background-image: url(static/img/nazarenko/cat.jpg);"></span>
+                            </a>
+                        </div>
+                        <div class="profile-img-list-item">
+                            <a href="https://t.me/nft/LootBag-9058" data-lity="" class="profile-img-list-link">
+                                <span class="profile-img-content" style="background-image: url(static/img/nazarenko/goldbag.jpg);"></span>
+                            </a>
+                        </div>
+                        <div class="profile-img-list-item">
+                            <a href="https://t.me/nft/LootBag-7430" data-lity="" class="profile-img-list-link">
+                                <span class="profile-img-content" style="background-image: url(static/img/nazarenko/scrooge.jpg);"></span>
+                            </a>
+                        </div>
+                        <div class="profile-img-list-item">
+                            <a href="https://t.me/nft/SwissWatch-21203" data-lity="" class="profile-img-list-link">
+                                <span class="profile-img-content" style="background-image: url(static/img/nazarenko/watch.jpg);"></span>
+                            </a>
+                        </div>
+                        <div class="profile-img-list-item with-number">
+                            <a href="#" data-lity="" class="profile-img-list-link">
+                                <span class="profile-img-content" style="background-image: url(static/img/nazarenko/oscar.jpg);"></span>
+                                <div class="profile-img-number">+12</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="fullAlbumModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.8); z-index:9999; overflow:auto;">
+                        <div style="background:#fff; margin:50px auto; padding:20px; max-width:800px; position:relative;">
+                            <button id="closeAlbum" style="position:absolute; top:10px; right:10px;">Закрыть</button>
+                            <h2>Полный альбом</h2>
+                            <!-- Здесь разместите содержимое альбома -->
+                            <div id="albumContent" class="fullalbum">
+                            <!-- Можно вставить изображения или iframe -->
+                                    <img src="static/img/nazarenko/oscar.jpg" style="width: 20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/ball.png" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/shard.png" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/pepe.png" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                                    <img src="static/img/nazarenko/goldbag.jpg" style="width:20%; margin-bottom:10px;">
+                            <!-- добавьте свои изображения -->
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-1 opacity-1" />
+
+                    <div class="row text-center fw-bold">
+                        <div class="col">
+    <a href="#" id="likeBtn" class="text-body text-opacity-50 text-decoration-none d-block p-2" style="font-size: 1.5rem;">
+        <i class="far fa-thumbs-up me-1 d-block d-sm-inline"></i> Likes
+        <span id="likeCount">{{ likes }}</span>
+    </a>
+</div>
+                        <div class="col">
+                            <a href="#" class="text-body text-opacity-50 text-decoration-none d-block p-2"> <i class="far fa-comment me-1 d-block d-sm-inline"></i> Comment </a>
+                        </div>
+                        <div class="col">
+                            <a href="#" class="text-body text-opacity-50 text-decoration-none d-block p-2"> <i class="fa fa-share me-1 d-block d-sm-inline"></i> Share </a>
+                        </div>
+                    </div>
+                    <hr class="mb-3 mt-1 opacity-1" />
+                    <div class="d-flex align-items-center">
+                        <img src="static/img/anon.jpg" alt="" width="35" class="rounded-circle" />
+                        <div class="flex-fill ps-2">
+                            <div class="position-relative d-flex align-items-center">
+                                <input type="text" class="form-control rounded-pill bg-white bg-opacity-15" style="padding-right: 120px;" placeholder="Write a comment..." />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
